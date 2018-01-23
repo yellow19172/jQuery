@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动画效果2</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .tab{
+           border-top: 1px solid #ccc;
+           border-right: 1px solid #ccc;
+           border-left: 1px solid #ccc;
+           float: left;
+            border-radius: 3px 3px 0 0;
+        }
+        .tab>li{
+            float: left;
+            font-size: 12px;
+            padding: 5px 0;
+        }
+        .tab>li>a{
+            color: black;
+        }
+        .box{
+            width: 644px;
+            border: 1px solid #ccc;
+        }
+        .panels-ct>.panel{
+            width: 200px;
+            text-align: center;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .panel:nth-child(3),.panel:nth-child(6){
+            margin-right: 0px;
+            border-left:1px solid #ccc;
+        }
+        .panel:nth-child(1),.panel:nth-child(4){
+            border-right:1px solid #ccc;
+        }
+        .panel:nth-child(2),.panel:nth-child(5){
+            border-right:1px solid #ccc;
+            border-left:1px solid #ccc;
+        }
+        .panel:nth-child(4),.panel:nth-child(5),.panel:nth-child(6){
+            margin-bottom: 0;
+            border-top: 1px solid #ccc;
+
+        }
+        .panel:nth-child(1),.panel:nth-child(2),.panel:nth-child(3){
+            border-bottom: 1px solid #ccc;
+        }
+
+        .panel .name{
+            font-size: 12px;
+            color: black;
+            margin: 5px;
+        }
+        .panel .price{
+            font-size: 12px;
+            color: #c7171e;
+            margin: 5px;
+        }
+        .tab .active{
+            background-color: #ccc;
+
+        }
+        .tab .active a{
+            color: #c7171e;
+        }
+        .box{
+            display: none;
+        }
+        .boxes>.active{
+            display: block;
+        }
+        .cover .btn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid #c81623;
+            color: #c81623;
+            padding: 10px 15px;
+            border-radius: 3px;
+            text-align: center;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0,0,0, 0.3);
+            transition: all 0.3s;
+            opacity: 0;
+        }
+        .panel>.hover{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="mod-tab ">
+    <div class="tabs-ct clearfix">
+        <ul class="tab ">
+            <li class="tab-tital"><a href="#">热门</a></li>
+            <li>|</li>
+            <li class="tab-tital"><a href="#">珠宝首饰</a></li>
+            <li>|</li>
+            <li class="tab-tital"><a href="#">奢侈品</a></li>
+        </ul>
+    </div>
+    <ul class="boxes">
+        <li class="box active ">
+    <ul class="panels-ct clearfix ">
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                <div class="name">漂亮的钻戒</div>
+                <div class="price">$9999.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                <div class="name">漂亮的钻戒</div>
+                <div class="price">$9999.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                <div class="name">漂亮的钻戒</div>
+                <div class="price">$9999.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                <div class="name">漂亮的钻戒</div>
+                <div class="price">$9999.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                <div class="name">漂亮的钻戒</div>
+                <div class="price">$9999.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                <div class="name">漂亮的钻戒</div>
+                <div class="price">$9999.00</div>
+            </a>
+        </li>
+    </ul>
+    </li>
+    <li class="box ">
+    <ul class="panels-ct clearfix ">
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+                <div class="name">很贵的金条</div>
+                <div class="price">$88888.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+                <div class="name">很贵的金条</div>
+                <div class="price">$88888.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+                <div class="name">很贵的金条</div>
+                <div class="price">$88888.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+                <div class="name">很贵的金条</div>
+                <div class="price">$88888.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+                <div class="name">很贵的金条</div>
+                <div class="price">$88888.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+                <div class="name">很贵的金条</div>
+                <div class="price">$88888.00</div>
+            </a>
+        </li>
+    </ul>
+    </li>
+
+    <li class="box ">
+    <ul class="panels-ct clearfix ">
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+                <div class="name">高贵的金镶玉</div>
+                <div class="price">$66666.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+                <div class="name">高贵的金镶玉</div>
+                <div class="price">$66666.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+                <div class="name">高贵的金镶玉</div>
+                <div class="price">$66666.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+                <div class="name">高贵的金镶玉</div>
+                <div class="price">$66666.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+                <div class="name">高贵的金镶玉</div>
+                <div class="price">$66666.00</div>
+            </a>
+        </li>
+        <li class="panel">
+            <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+            <a href="#">
+                <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+                <div class="name">高贵的金镶玉</div>
+                <div class="price">$66666.00</div>
+            </a>
+        </li>
+    </ul>
+    </li>
+    </ul>
+</div>
+<script>
+
+    $('.tab li').on('click',function (e) {
+
+        var $this = $(this);
+        var idx = $this.index('.tab-tital');
+        $this.siblings().removeClass('active');
+        $this.addClass('active');
+        $this.parents('.mod-tab').find('.boxes>.box').removeClass('active')
+        $this.parents('.mod-tab').find('.boxes>.box').eq(idx).addClass('active')
+    })
+    $('.panel').on('mouseenter', function(e){
+        $(this).find('.cover').addClass('hover');
+    });
+    $('.panel').on('mouseleave', function(e){
+        $(this).find('.cover').removeClass('hover');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab切换</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        *{
+            list-style-type: none;
+        }
+        ul{
+            margin: 0;
+        }
+        .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .tabs li{
+            float: left;
+            width: 150px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .tabs li:hover{
+        cursor: pointer;
+        }
+        .panel{
+            width:454px ;
+            height: 150px;
+            border: 1px solid #ccc;
+            float:left;
+            display: none;
+        }
+        .panels-ct>.active{
+            display: block;
+        }
+        .tabs>.active{
+            background-color: #c81623;
+        }
+    </style>
+</head>
+<body>
+<div class="ipt">
+<div class="mod-tab">
+    <ul class="tabs clearfix">
+        <li>tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+</div>
+<div class="box">
+    <ul class="panels-ct clearfix">
+        <li class="panel active">111</li>
+        <li class="panel">222</li>
+        <li class="panel">333</li>
+    </ul>
+</div>
+</div>
+<script>
+    $('.tabs li').on('click',function () {
+        var idx = $(this).index();
+        console.log(idx)
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+        $(this).parents('.ipt').find('.box .panels-ct .panel').removeClass('active');
+        $(this).parents('.ipt').find('.box .panels-ct .panel').eq(idx).addClass('active')
+    })
+</script>
+</body>
+</html>

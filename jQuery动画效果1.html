@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动画效果1</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        li{
+            list-style-type: none;
+        }
+        .aside{
+            width: 200px;
+            padding:0;
+            margin:0;
+            background-color: #c7171e;
+        }
+        .gem{
+            padding:5px;
+            font-size: 14px;
+            position: relative;
+        }
+        .gem>.title{
+            width:160px;
+            display: inline-block;
+            color: #fff;
+        }
+        .gem>span>a{
+            color: #fff;
+        }
+        .child{
+            position: absolute;
+            top:0px;
+            left:200px;
+            width:200px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        .clearfix:after{
+            content: " ";
+            display: block;
+            clear: both;
+        }
+        .child>li{
+            float: left;
+            width: 100px;
+            padding: 5px 0px;
+        }
+        .child>li>a{
+            color: black;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="aside">
+        <li class="gem">
+            <a href="#" class="title">珠宝玉石</a><span><a href="#"> > </a> </span>
+            <ul class="child clearfix">
+                <li><a href="#">翡翠</a></li>
+                <li><a href="#">翡翠</a></li>
+                <li><a href="#">翡翠</a></li>
+                <li><a href="#">翡翠</a></li>
+                <li><a href="#">宝石</a></li>
+                <li><a href="#">宝石</a></li>
+                <li><a href="#">宝石</a></li>
+                <li><a href="#">宝石</a></li>
+            </ul>
+
+        </li>
+
+        <li class="gem">
+            <a href="#" class="title">黄金白金</a><span><a href="#"> > </a> </span>
+            <ul class="child clearfix">
+                <li><a href="#">黄金</a></li>
+                <li><a href="#">黄金</a></li>
+                <li><a href="#">黄金</a></li>
+                <li><a href="#">白金</a></li>
+                <li><a href="#">白金</a></li>
+                <li><a href="#">白金</a></li>
+
+            </ul>
+
+        </li>
+
+        <li class="gem">
+            <a href="#" class="title">水墨字画</a><span><a href="#"> > </a> </span>
+            <ul class="child clearfix">
+                <li><a href="#">字画</a></li>
+                <li><a href="#">字画</a></li>
+                <li><a href="#">水墨</a></li>
+                <li><a href="#">水墨</a></li>
+            </ul>
+
+        </li>
+
+    </ul>
+</div>
+<script>
+    $('.gem').on('mouseenter',function () {
+        $(this).find('.child').show()
+    })
+    $('.gem').on('mouseleave',function () {
+        $(this).find('.child').hide()
+    })
+</script>
+</body>
+</html>

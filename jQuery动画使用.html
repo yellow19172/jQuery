@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动画使用</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous">
+
+    </script>
+    <style>
+        .box{
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            position: relative;
+        }
+        .item{
+            list-style-type: none;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<div class="box">hello</div>
+<button id="btn1">点我1</button>
+<button id="btn2">点我2</button>
+<ul class="ct">
+    <li class="item">
+        <h3>标题1</h3>
+        <p>内容1</p>
+    </li>
+    <li class="item">
+        <h3>标题2</h3>
+        <p>内容2</p>
+    </li>
+    <li class="item">
+        <h3>标题3</h3>
+        <p>内容3</p>
+    </li>
+</ul>
+<script>
+    $('#btn1').on('click',function () {
+        $('.box').animate({height:'0'},2000)
+                 .animate({height:'150'},2000)
+                 .animate({left:'150px' })
+                 .animate({top:'150px',width:'70px',height:'70px'})
+                 .animate({top:'0',left:'0',width:'150px',height:'150px'},function () {console.log('真的完毕了')})
+        console.log('完毕了吗')
+    })
+    $('#btn2').on('click',function () {
+      var actions = [{height:'0'},
+                 {height:'150'},
+                 {left:'150px' },
+                 {top:'150px',width:'70px',height:'70px'},
+          {top:'0',left:'0',width:'150px',height:'150px'}
+      ]
+        actions.forEach(function (action) {
+            $('.box').animate(action)
+        })
+    })
+    $('.ct .item').on('click',function () {
+        $(this).find('p').slideDown()
+        $(this).siblings().find('p').slideUp()
+    })
+</script>
+</body>
+</html>
